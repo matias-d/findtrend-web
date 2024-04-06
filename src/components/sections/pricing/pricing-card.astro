@@ -1,0 +1,46 @@
+---
+import { cn } from '../../../lib/cn'
+import DoneSvg from '../../icons/done-svg.astro'
+import Button from '../../ui/button.astro'
+interface PricingI {
+    type : string
+    description : string
+    price : string
+    benefits : string[]
+    isActive? : boolean
+}
+
+interface Props {
+  card : PricingI
+}
+
+const { card } = Astro.props
+---
+
+<article class={cn("px-8 rounded-2xl pt-8 pb-6 bg-white w-full lg:min-w-[24rem] min-h-[40rem] flex flex-col justify-between", card.isActive && 'bg-color-p-1 ' )}>
+    <div class="pb-10">
+      <h4 class="h4 text-black mb-2">{card.type}</h4>
+      <p class="body-1 text-black">{card.description}</p>
+      
+      <hr class="bg-black/10  border-black/10 w-full my-8"/>
+  
+      <div class="text-black flex items-center gap-x-2 mb-8">
+        <p class="text-[3.75rem] font-bold">${card.price}</p>
+        <span class="body-1 mt-8 font-medium">/Month</span>
+      </div>
+           
+      <ul class="space-y-6">
+        {
+          card.benefits.map(benefit => (
+            <li class="flex items-center gap-x-4">
+              <DoneSvg/>
+              <span class="body-1 text-black">{benefit}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  
+    <Button href='#signup' className={cn('bg-color-p-1 text-center', card.isActive && 'bg-black text-white')}>Start Free Trial</Button>
+  </article>
+  

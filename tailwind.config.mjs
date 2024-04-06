@@ -53,6 +53,10 @@ export default {
           '@apply font-bold text-[2.5rem] leading-[3.25rem] md:text-[2.75rem] md:leading-[3.75rem]  lg:text-[3.50rem] lg:leading-[4.0625rem] xl:text-[3.80rem] xl:leading-[4.5rem]':
             {},
         },
+        '.h4': {
+          '@apply font-medium text-xl md:text-3xl md:leading-[2.75rem] lg:leading-[4.0625rem] xl:text-4xl xl:leading-[3.5rem]':
+            {},
+        },
         '.body-1': {
           '@apply font-normal text-[0.9rem] lg:text-lg': {},
         },

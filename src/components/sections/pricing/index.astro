@@ -1,0 +1,60 @@
+---
+import Tooltip from '../../ui/tooltip.astro'
+import PricingCard from './pricing-card.astro';
+
+const pricingList = [
+  {
+    id : 1,
+    type : 'Personal',
+    description : 'Special first packet for all',
+    price : '8',
+    benefits : ['Up to 5 page each group', 'Up to 10 group page', '5 Days group page saved']
+  },
+  {
+    id : 2,
+    type : 'Regular',
+    description : 'Recommended for personal pro',
+    price : '20',
+    benefits : ['Up to 15 page each group', 'Download page up to 20 page', 'Up to 10 group page', '15 Days group page saved'],
+    isActive : true
+  },
+  {
+    id : 3,
+    type : 'Premium',
+    description : 'Packet for Startup & Company',
+    price : '48',
+    benefits : ['Unlimited group pages', 'Unlimited download page', 'Unlimited page each group', 'Customize sorting group pages', 'Customize group page name', '30 Days group page saved']
+  }
+]
+---
+<section id="pricing" class="h-auto lg:min-h-screen py-28 w-full px-6 lg:px-[7.8rem] lg:py-36  flex flex-col items-center  justify-center bg-black">
+
+    <h2 class="h3 text-white mb-10">Get your best deal</h2>
+
+    <div class="flex items-center w-full justify-center gap-x-6 mb-10">
+        <p class="text-2xl font-medium text-white">Monthly</p>
+
+        <label class="cursor-pointer gap-x-2 flex shadow rounded-md   py-4 px-2">
+          
+            <input
+              type="checkbox"
+              name="legalEntity"
+              class="sr-only peer"
+            />
+            <div class="relative w-20 h-10 bg-gray-200  rounded-full  dark:bg-gray-400 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full   after:absolute after:top-[2px] after:start-[4px] after:bg-white  after:rounded-full after:h-9 after:w-9 after:transition-all  peer-checked:bg-color-p-1"></div>
+          </label>
+          <div class="relative">
+            <p class="text-2xl font-medium opacity-50 text-white">Yearly</p>
+            <Tooltip title='Save 105 per month' right/>
+          </div>
+    </div>
+
+
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-10 w-full">
+      {
+        pricingList.map(pricing => (
+          <PricingCard card={pricing}/>
+        ))
+      }
+    </section>
+</section>
