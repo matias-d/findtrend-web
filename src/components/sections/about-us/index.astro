@@ -1,4 +1,52 @@
-<section class="h-auto pb-12 lg:pb-0 lg:min-h-screen w-full px-6 lg:px-[7.8rem] xl:px-[8.8rem] flex flex-col items-center justify-center bg-white ">
- <h3 class="h3 text-black">Findtrend helps you to increase your productivity and reduce your computer's memore load, <span class="text-color-b-4">
+---
+const socials = [
+  {
+    id : 1,
+    image : '/assets/images/facebook.png'
+  },
+  {
+    id : 2,
+    image : '/assets/images/twitter.png'
+  },
+  {
+    id : 3,
+    image : '/assets/images/dribble.png'
+  },
+  {
+    id : 4,
+    image : '/assets/images/pinterest.png'
+  },
+  {
+    id : 5,
+    image : '/assets/images/m.png'
+  },
+  {
+    id : 6,
+    image : '/assets/images/reddit.png'
+  },
+  {
+    id : 7,
+    image : '/assets/images/wataka.png'
+  },
+  {
+    id : 8,
+    image : '/assets/images/linkedin.png'
+  }
+]
+---
+
+<section class="h-auto pt-20 lg:min-h-screen w-full px-6 lg:px-[7.8rem] xl:px-[8.8rem] flex flex-col items-center justify-center bg-white ">
+ <h3 class="h3 text-black mb-20 text-balance">Findtrend helps you to increase your productivity and reduce your computer's memore load, <span class="text-color-b-4">
     an application that can fulfill your daily browsing needs.</span></h3>
+
+
+  <ul class="flex flex-wrap lg:flex-nowrap gap-8 items-center lg:gap-24 justify-center overflow-hidden">
+    {
+      socials.map(social => (
+        <li class="grayscale hover:grayscale-0 hover:scale-[1.03] transition-all">
+          <img src={social.image} alt="Social icon" width="60" height="60"/>
+        </li>
+      ))
+    }  
+  </ul>  
 </section>
