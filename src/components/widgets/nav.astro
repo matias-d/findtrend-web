@@ -44,14 +44,14 @@ const navigation = [
 
 <nav class="hidden fixed top-[5.5rem] left-0 right-0 bottom-0 z-[60]  lg:static lg:flex lg:mx-auto lg:bg-transparent nav bg-black h-screen lg:h-auto">
 
-    <ul class="flex  flex-col lg:flex-row w-full lg:w-auto items-center justify-center pt-20 lg:pt-0 gap-y-6">
+    <ul class="flex  flex-col lg:flex-row w-full lg:w-auto items-center justify-center pt-20 lg:pt-0 gap-y-6 nav-items">
         {
             navigation.map(nav => (
                 <li>
                     {
                         nav.title === 'Register'
                         ? <Button href={nav.href} className="py-3 bg-white font-normal lg:hidden block">{nav.title}</Button> 
-                        : <a href={nav.href} class={`text-white lg:px-6 lg:py-4 lg:text-lg text-2xl hover:text-color-p-1 transition-colors ${nav.isMobile ? 'lg:hidden' : 'block'}`}>{nav.title}</a>
+                        : <a  href={nav.href} class={`text-white lg:px-6 lg:py-4 lg:text-lg text-2xl hover:text-color-p-1 transition-colors ${nav.isMobile ? 'lg:hidden' : 'block'}`}>{nav.title}</a>
                     }
                     
                 </li>
@@ -61,6 +61,48 @@ const navigation = [
 
 
 </nav>
+
+<script>
+    import { $$, $ } from '../../lib/dom-selector'
+    // Obtener todos los enlaces dentro del componente <nav>
+    const navLinks = $$('.nav-items a');
+    const nav = $('.nav')
+    const menuSvg = $('#menuSvg')
+    function toggleMenu(menuMobileContent: HTMLElement | null) {
+    menuMobileContent?.classList.toggle("block")
+    menuMobileContent?.classList.toggle("hidden")
+    document.body.classList.toggle("overflow-hidden")
+    document.body.classList.toggle("lg:overflow-auto")
+}
+
+function toggleMenuIcon(menuSvg: HTMLElement | null, openNavigation: boolean) {
+        const rect1 = menuSvg?.querySelector('rect:nth-child(1)')
+        const rect2 = menuSvg?.querySelector('rect:nth-child(2)')
+        
+        if (rect1 && rect2) {
+            rect1.setAttribute('y', openNavigation ? "5" : "0")
+            rect1.setAttribute('transform', `rotate(${openNavigation ? "45" : "0"})`)
+            rect2.setAttribute('y', openNavigation ? "5" : "10")
+            rect2.setAttribute('transform', `rotate(${openNavigation ? "-45" : "0"})`)
+        }
+    }
+
+
+     // Agregar event listener de click a cada enlace
+     navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            
+            // Alternar la visibilidad del menú móvil
+            toggleMenu(nav);
+            
+            // Obtener el estado actual del menú móvil
+            const openNavigation = !nav.classList.contains('hidden');
+
+            // Alternar el ícono del menú móvil
+            toggleMenuIcon(menuSvg, openNavigation);
+        });
+    });
+</script>
 
 
 
