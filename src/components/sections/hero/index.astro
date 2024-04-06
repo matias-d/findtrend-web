@@ -1,0 +1,35 @@
+---
+import CardSocmed from '../../widgets/card-socmed.astro';
+import Button from '../../ui/button.astro';
+import FireSvg from '../../icons/fire-svg.astro'
+import Tooltip from '../../ui/tooltip.astro';
+---
+
+<section class="h-auto pb-12 lg:pb-0 lg:min-h-[calc(100vh-300px)] w-full px-6 lg:px-[7.8rem] xl:px-[8.8rem] flex flex-col items-center justify-center">
+
+      <h1 class="h1 text-white text-center mb-6 ">
+        Minimize your tabs. <br/>
+        Find the trends!
+      </h1>
+      <p class="body-1 text-color-b-3 w-auto lg:w-[40rem] text-center mb-10">Don’t let your computer memories consumes all of those browser tabs. 
+        Findtrend  let you gathers all of your favorite website into one place.</p>
+    
+      <div class="relative mb-12 lg:mb-4 z-0 ">
+        <Button href='#signup' className='flex items-center gap-x-2 pl-10'>Get started <FireSvg /></Button>  
+        <Tooltip className='hidden lg:block' title='All research start from here' right/>
+      </div>  
+
+      <div class="relative w-full min-h-[14rem] flex flex-col lg:flex-row items-center justify-between overflow-hidden -z-10">
+          <CardSocmed  icon='/assets/images/twitter.png' title='Cryptopunk - Search' className='z-20 static lg:absolute'/>
+          <CardSocmed shadowBox icon='/assets/images/pinterest.png' title='Popular Design - Search' className='top-24 left-12 rotate-[2deg] static lg:absolute'/>
+          <CardSocmed  icon='/assets/images/facebook.png' title='Popular Design - Search' className='right-0 left-auto top-4 -rotate-[2deg] z-20 static lg:absolute'/>
+          <CardSocmed shadowBox icon='/assets/images/dribble.png' title='Elon Musk - Search' className='top-24 left-auto -right-0 rotate-[4deg] static lg:absolute'/>
+      </div>
+
+      <div class="absolute top-0 left-0 pointer-events-none   w-full overflow-hidden h-full -z-20 ">
+
+        <img draggable="false" src="/assets/hero/ornament.svg"  width={1440}
+        height={490} class="h-full w-full object-cover lg:object-none"/>
+      </div>
+
+<section>

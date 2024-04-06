@@ -1,0 +1,29 @@
+---
+import { cn } from '../../lib/cn'
+import ArrowSvg from '../icons/arrow-svg.astro'
+
+interface Props {
+    title : string
+    black? : boolean
+    className? : string
+    left? : boolean
+    right? : boolean
+    arrowTop? : boolean
+}
+
+
+const { title, black, className, left, right, arrowTop } = Astro.props
+
+const classes = `rotate-12  text-center  top-4 -translate-y-1/2 absolute ${left ? '-left-32' : right ? '-right-32' : '-left-32'}`
+---
+
+<div class={cn(classes, className)}>
+    <div class="relative ">
+        <span class={cn('text-white inline-block w-32 font-indie leading-4', black && 'text-black')}>{title}</span>
+        <div class={cn("absolute left-10 -translate-x-1/2 -bottom-10", arrowTop && 'bottom-auto -top-10',
+        left && 'left-20'
+        )}>
+            <ArrowSvg black={black} left={left}/>
+        </div>
+    </div>
+</div>

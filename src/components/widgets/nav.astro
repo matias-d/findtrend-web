@@ -1,0 +1,66 @@
+---
+import Button from '../ui/button.astro'
+
+const navigation = [
+    {
+        id : 1,
+        title : 'About',
+        href : '#about'
+    },
+    {
+        id : 2,
+        title : 'How it work',
+        href : '#how-it-work'
+    },
+    {
+        id : 3,
+        title : 'Pricing',
+        href : '#pricing'
+    },
+    {
+        id : 4,
+        title : 'Solution',
+        href : '#solution'
+    },
+    {
+        id : 5,
+        title : 'Features',
+        href : '#features'
+    },
+    {
+        id : 6,
+        title : 'Login',
+        href : '#signin',
+        isMobile : true
+    },
+    {
+        id : 7,
+        title : 'Register',
+        href : '#signup',
+        isMobile : true
+    },    
+]
+---
+
+<nav class="hidden fixed top-[5.5rem] left-0 right-0 bottom-0 z-[60]  lg:static lg:flex lg:mx-auto lg:bg-transparent nav bg-black h-screen lg:h-auto">
+
+    <ul class="flex  flex-col lg:flex-row w-full lg:w-auto items-center justify-center pt-20 lg:pt-0 gap-y-6">
+        {
+            navigation.map(nav => (
+                <li>
+                    {
+                        nav.title === 'Register'
+                        ? <Button href={nav.href} className="py-3 bg-white font-normal lg:hidden block">{nav.title}</Button> 
+                        : <a href={nav.href} class={`text-white lg:px-6 lg:py-4 lg:text-lg text-2xl hover:text-color-p-1 transition-colors ${nav.isMobile ? 'lg:hidden' : 'block'}`}>{nav.title}</a>
+                    }
+                    
+                </li>
+            ))
+        }
+    </ul>
+
+
+</nav>
+
+
+
